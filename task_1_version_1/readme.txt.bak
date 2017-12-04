@@ -16,3 +16,14 @@ operator: Yuxin Liu
 + added feature_eng transform X_val after setting up pipeline
 + change file name into 'task_1_plot_drop_points(without_chi2_plot).ipynb'
 - delete the feature_eng transform X_val in modeling section
+
+--------------------------30/11/2017-----------------------------------------
+file name: Task1.ipynb
+operator: Yuxin Liu
++add the ROC plot of KNN,SVM,XGB
++add the prediction plot of NN,KNN,SVM,XGB
++add the feature importances obtained from XGB
+
+file name: GridSearch_model.ipynb
+operator: Yuxin Liu
++add the parameters-tuning method of KNN, XGB

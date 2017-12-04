@@ -27,3 +27,13 @@ operator: Yuxin Liu
 file name: GridSearch_model.ipynb
 operator: Yuxin Liu
 +add the parameters-tuning method of KNN, XGB
+
+--------------------------4/12/2017-----------------------------------------
+file name: Task1.ipynb
+operator: Yuxin Liu
++add the SVC and Compare with LinearSVC and SVC
+
+
+file name: Mahalanobis_tensorflow.ipynb
+operator: Yuxin Liu
++add tensorflow approach to mahalanobis distance
