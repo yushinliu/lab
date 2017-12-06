@@ -43,3 +43,7 @@ file name: Task1.ipynb
 operator: Shanqi Yang
 +add new mapping ways
 +visualization of the result after outlier detection and boundary selection
+--------------------------6/12/2017-----------------------------------------
+file name: Task1.ipynb
+operator: Shanqi Yang
++add method: the calculation of f1 score and BER
