@@ -43,7 +43,24 @@ file name: Task1.ipynb
 operator: Shanqi Yang
 +add new mapping ways
 +visualization of the result after outlier detection and boundary selection
+
 --------------------------6/12/2017-----------------------------------------
 file name: Task1.ipynb
 operator: Shanqi Yang
 +add method: the calculation of f1 score and BER
+
+--------------------------6/12/2017-----------------------------------------
+file name: Task1.ipynb
+operator: Shanqi Yang
++add method: the calculation of f1 score and BER
+
+--------------------------7/12/2017-----------------------------------------
+file name: Task1.ipynb
+operator: Shanqi Yang
++correct the calculation of f1_score and BER
+
+file name: NN.ipyb
+operator: Shanqi Yang
++add the weight parameter of NN method
++add the adjustment of parameters in NN model
++redefine the plot of ROC
