@@ -64,3 +64,17 @@ operator: Shanqi Yang
 +add the weight parameter of NN method
 +add the adjustment of parameters in NN model
 +redefine the plot of ROC
+
+--------------------------9/12/2017-----------------------------------------
+file name: Task1.ipynb
+operator: Shanqi Yang
++modify the normalization way
+
+file name: NN.ipyb
+operator: Shanqi Yang
++add the plotting of result
+
+file name: kNN.ipyb
+operator: Shanqi Yang
++add the build of the model
++add the meoth of doubling the data or randomly seleting data to get the balance of dataS
