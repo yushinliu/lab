@@ -20,3 +20,7 @@ operator: Yuxin Liu
 operator: Wei Qianqian
 + added Mel Scale Function
 + add function:DCT(Y)
+
+--------------------------10/12/2017-----------------------------------------
+operator: Yuxin Liu
++added Covariance function in GMM
