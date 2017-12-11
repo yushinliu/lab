@@ -27,3 +27,54 @@ operator: Yuxin Liu
 file name: GridSearch_model.ipynb
 operator: Yuxin Liu
 +add the parameters-tuning method of KNN, XGB
+
+--------------------------4/12/2017-----------------------------------------
+file name: Task1.ipynb
+operator: Yuxin Liu
++add the SVC and Compare with LinearSVC and SVC
+
+
+file name: Mahalanobis_tensorflow.ipynb
+operator: Yuxin Liu
++add tensorflow approach to mahalanobis distance
+
+--------------------------6/12/2017-----------------------------------------
+file name: Task1.ipynb
+operator: Shanqi Yang
++add new mapping ways
++visualization of the result after outlier detection and boundary selection
+
+--------------------------6/12/2017-----------------------------------------
+file name: Task1.ipynb
+operator: Shanqi Yang
++add method: the calculation of f1 score and BER
+
+--------------------------6/12/2017-----------------------------------------
+file name: Task1.ipynb
+operator: Shanqi Yang
++add method: the calculation of f1 score and BER
+
+--------------------------7/12/2017-----------------------------------------
+file name: Task1.ipynb
+operator: Shanqi Yang
++correct the calculation of f1_score and BER
+
+file name: NN.ipyb
+operator: Shanqi Yang
++add the weight parameter of NN method
++add the adjustment of parameters in NN model
++redefine the plot of ROC
+
+--------------------------9/12/2017-----------------------------------------
+file name: Task1.ipynb
+operator: Shanqi Yang
++modify the normalization way
+
+file name: NN.ipyb
+operator: Shanqi Yang
++add the plotting of result
+
+file name: kNN.ipyb
+operator: Shanqi Yang
++add the build of the model
++add the meoth of doubling the data or randomly seleting data to get the balance of dataS

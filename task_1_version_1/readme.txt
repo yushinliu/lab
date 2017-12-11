@@ -78,3 +78,8 @@ file name: kNN.ipyb
 operator: Shanqi Yang
 +add the build of the model
 +add the meoth of doubling the data or randomly seleting data to get the balance of dataS
+
+--------------------------11/12/2017-----------------------------------------
+file name: Feature_Selection.ipynb
+operator: Yuxin Liu
++added feature selection method 
