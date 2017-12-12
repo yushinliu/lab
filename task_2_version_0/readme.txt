@@ -24,10 +24,4 @@ operator: Wei Qianqian
 --------------------------10/12/2017-----------------------------------------
 operator: Yuxin Liu
 +added Covariance function in GMM
-+modified the pdf equation from norm to multivariate_normal
-
---------------------------11/12/2017-----------------------------------------
-operator: Wei Qianqian
-+added function to calculate posteriori probability,mean and covariance matrix,corresponding weights of the adapted k_th mode of the speaker
-+ built the function for voice activity detector
-
++modified the pdf equation from norm to multivariate_normalm
