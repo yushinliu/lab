@@ -25,3 +25,8 @@ operator: Wei Qianqian
 operator: Yuxin Liu
 +added Covariance function in GMM
 +modified the pdf equation from norm to multivariate_normalm
+
+--------------------------13/12/2017-----------------------------------------
+operator: Yuxin Liu
++added adapted functions
++modified the mel filter bank plot
