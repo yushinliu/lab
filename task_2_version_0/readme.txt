@@ -41,5 +41,6 @@ operator: Wei Qianqian
 
 --------------------------13/12/2017-----------------------------------------
 operator: Yuxin Liu
++added identification
 +added cross validation
 +modified the mel filter bank plot
