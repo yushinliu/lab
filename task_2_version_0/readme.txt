@@ -25,3 +25,15 @@ operator: Wei Qianqian
 operator: Yuxin Liu
 +added Covariance function in GMM
 +modified the pdf equation from norm to multivariate_normalm
+
+--------------------------11/12/2017-----------------------------------------
+operator: Wei Qianqian
++added function to calculate mean,covariance matrix and weights of the k_mode
++calculate the paramenters alpha,mu,cov,weights of the adapted k_th mode
+
+
+--------------------------12/12/2017-----------------------------------------
+operator: Wei Qianqian
++added function:voice_activity_detection
++added datastructure lambda_dict
++added function:feature_vector_find
