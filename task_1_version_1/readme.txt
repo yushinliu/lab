@@ -92,3 +92,8 @@ operator:Shanqi Yang
 file name: boundary_selection_FCNN.ipynb
 operator:Shanqi Yang
 + add new ways of boundary selection
+
+--------------------------17/12/2017-----------------------------------------
+file name: feature selection.ipynb
+operator:Yuxin Liu
++ added new contrast plot of two features

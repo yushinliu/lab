@@ -78,3 +78,17 @@ file name: kNN.ipyb
 operator: Shanqi Yang
 +add the build of the model
 +add the meoth of doubling the data or randomly seleting data to get the balance of dataS
+
+--------------------------16/12/2017-----------------------------------------
+file name: boundary_selection_CNN.ipynb
+operator:Shanqi Yang
++ add new ways of boundary selection
+
+file name:doctor_score
+operator:Shanqi Yang
++ calculate the score for doctors 
+
+--------------------------17/12/2017-----------------------------------------
+file name: boundary_selection_FCNN.ipynb
+operator:Shanqi Yang
++ add new ways of boundary selection
