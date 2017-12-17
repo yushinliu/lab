@@ -87,3 +87,8 @@ operator:Shanqi Yang
 file name:doctor_score
 operator:Shanqi Yang
 + calculate the score for doctors 
+
+--------------------------17/12/2017-----------------------------------------
+file name: boundary_selection_FCNN.ipynb
+operator:Shanqi Yang
++ add new ways of boundary selection
