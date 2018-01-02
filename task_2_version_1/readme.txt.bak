@@ -8,3 +8,8 @@ operator: Yuxin Liu
 + added comparison between spectral leakage and without spectral leakage
 + added added the save of model parameter
 
+--------------------------13/12/2017-----------------------------------------
+file name: Tunning_gamma.ipynb
+operator: Yuxin Liu
++ added the plot of the noise frames and voice frames
+
