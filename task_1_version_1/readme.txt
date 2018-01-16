@@ -97,3 +97,20 @@ operator:Shanqi Yang
 file name: feature selection.ipynb
 operator:Yuxin Liu
 + added new contrast plot of two features
+
+--------------------------16/12/2017-----------------------------------------
+file name: boundary_selection_FCNN_improved.ipynb
+operator:Shanqi Yang
++ This file improves the calcution ways of the orginal one with matrix calculation.
+
+file name: CNN_test.ipynb
+operator:Shanqi Yang
++ To improve the calculation speed. The dataset is split according to the source [patient of the data.
+
+file name: CNN_test2.ipynb
+operator:Shanqi Yang
++ To improve the calculation speed. The dataset is split to equal amount data.
+
+file name: FCNN_test.ipynb
+operator:Shanqi Yang
++ To improve the calculation speed. The dataset is split to equal amount data.
