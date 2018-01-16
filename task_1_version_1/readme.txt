@@ -98,7 +98,7 @@ file name: feature selection.ipynb
 operator:Yuxin Liu
 + added new contrast plot of two features
 
---------------------------16/12/2017-----------------------------------------
+--------------------------16/1/2017-----------------------------------------
 file name: boundary_selection_FCNN_improved.ipynb
 operator:Shanqi Yang
 + This file improves the calcution ways of the orginal one with matrix calculation.
@@ -114,3 +114,28 @@ operator:Shanqi Yang
 file name: FCNN_test.ipynb
 operator:Shanqi Yang
 + To improve the calculation speed. The dataset is split to equal amount data.
+
+--------------------------16/1/2017-----------------------------------------
+file name: NN.ipynb
+operator:Shanqi Yang
++add new test content, the results with different boundary selection results
+
+file name£ºkNNtest_self_defined.ipynb
+operator:Shanqi Yang
++ test the data with self defined kNN model to compare with the result of the kNN package
+
+file name:kNN_(test with different k and data ratio).ipynb
+operator:Shanqi Yang
++parameter adjustment with kNN
+
++file name:SVC(different class rator).ipynb
+operator:Shanqi Yang
++parameter adjustment with SVC
+
++file name:SVC(parameter adjustment with choosing data ratio).ipynb
+operator:Shanqi Yang
++parameter adjustment with SVC
+
++file name:SVC(parameter adjustment without adjusting data ratio).ipynb
+operator:Shanqi Yang
++parameter adjustment with SVC
