@@ -5,25 +5,14 @@ audio_path = "D:\\LAB\\workspace\\lab\\patRecDat\\forStudents\\timit\\test"
 
 dataset=data_import(audio_path)  #samples is a dictionary of 172 persons
 
-feature_set={}
-
 for name in dataset.keys():
-	print("make the feature of "+ name)
+	print("
 	samples=dataset.get(name,'no such file name') # samples of one person
 
-    frames=frame_func(samples)  #frames is a list with length of 320*frames
 
-	window_frames=window_func(frames) #using hanning window
+    
 
-	freq_frames=mel_func(window_frames)# 
+	#frames=frame_func(samples)  #frames is a list with length of 
 
-	features=DCT_func(freq_frames)# features: 15*frames
-
-	feature_set.setdefault(name)
-
-	feature_set[name]=features
-
-
-
-
+	#window_frames=window_func(frames)
 
