@@ -1,5 +1,14 @@
 from data_import import data_import
 
+#default 
+t_feed=10 #feed time
+t_frame=20 #frame time
+sample_rate=16000
+fs=sample_rate/1000 #sample_rate of each ms
+L_value=np.int(fs*t_frame)
+NFFT=512
+nfilt=22
+
 audio_path = "D:\\LAB\\workspace\\lab\\patRecDat\\forStudents\\timit\\test"
 #audio_path = "/Users/Mata/Documents/2017/学习/ws2017:18/PUL/forStudents/timit/test"
 
