@@ -6,7 +6,10 @@ audio_path = "D:\\LAB\\workspace\\lab\\patRecDat\\forStudents\\timit\\test"
 dataset=data_import(audio_path)  #samples is a dictionary of 172 persons
 
 for name in dataset.keys():
-	print(name)
+	print("
+	samples=dataset.get(name,'no such file name') # samples of one person
+
+
     
 
 	#frames=frame_func(samples)  #frames is a list with length of 
