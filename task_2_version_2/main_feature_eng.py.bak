@@ -26,7 +26,7 @@ dataset=data_import(audio_path)  #samples is a dictionary of 172 persons
 
 feature_all_set={}
 print("feature engineering start")
-process_bar=ShowProcess(len(dataset.keys))
+process_bar=ShowProcess(len(dataset.keys()))
 for name in dataset.keys():
 	process_bar.show_process()
 	#print("make the feature of "+ name)
@@ -42,7 +42,10 @@ for name in dataset.keys():
 
 		features=DCT_func(freq_frames)# features: 15*frames
 
+		#features=features.ravel()
+
 		features_set.append(features)
+	print(len(features_set))
 
 	feature_all_set.setdefault(name)
 
