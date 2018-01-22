@@ -19,8 +19,8 @@ L_value=np.int(fs*t_frame)
 NFFT=512
 nfilt=22
 
-audio_path = "D:\\LAB\\workspace\\lab\\patRecDat\\forStudents\\timit\\test"
-#audio_path = "/Users/Mata/Documents/2017/学习/ws2017:18/PUL/forStudents/timit/test"
+#audio_path = "D:\\LAB\\workspace\\lab\\patRecDat\\forStudents\\timit\\test"
+audio_path = "/Users/Mata/Documents/2017/学习/ws2017:18/PUL/forStudents/timit/test"
 
 dataset=data_import(audio_path)  #samples is a dictionary of 172 persons
 
@@ -50,7 +50,8 @@ for name in dataset.keys():
 
 	feature_all_set[name]=features_set
 
-save_path="D:\\LAB\\lab\\task_2_version_2\\features.mat"
+#save_path="D:\\LAB\\lab\\task_2_version_2\\features.mat"
+save_path="/Users/Mata/Documents/lab/features.mat"
 savemat(save_path,feature_all_set)  
 process_bar.close()
 print("feature extraction compleleted")
