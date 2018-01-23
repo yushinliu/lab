@@ -6,7 +6,7 @@ from DCT_func import DCT_func
 from process_bar import ShowProcess
 
 #default 
-
+import pickle
 import numpy as np
 #loadmat
 from scipy.io import loadmat,savemat
@@ -19,8 +19,8 @@ L_value=np.int(fs*t_frame)
 NFFT=512
 nfilt=22
 
-#audio_path = "D:\\LAB\\workspace\\lab\\patRecDat\\forStudents\\timit\\test"
-audio_path = "/Users/Mata/Documents/2017/学习/ws2017:18/PUL/forStudents/timit/test"
+audio_path = "D:\\LAB\\workspace\\lab\\patRecDat\\forStudents\\timit\\test"
+#audio_path = "/Users/Mata/Documents/2017/学习/ws2017:18/PUL/forStudents/timit/test"
 
 dataset=data_import(audio_path)  #samples is a dictionary of 172 persons
 
@@ -42,7 +42,7 @@ for name in dataset.keys():
 
 		features=DCT_func(freq_frames)# features: 15*frames
 
-		features=features.ravel() # need to be reshape when import again
+		#features=features.ravel() # need to be reshape when import again
 
 		features_set.append(features)
 
@@ -50,9 +50,11 @@ for name in dataset.keys():
 
 	feature_all_set[name]=features_set
 
-#save_path="D:\\LAB\\lab\\task_2_version_2\\features.mat"
-save_path="/Users/Mata/Documents/lab/features.mat"
-savemat(save_path,feature_all_set)  
+save_path="D:\\LAB\\lab\\task_2_version_2\\features.txt"
+f = open(save_path,'wb')
+pickle.dump(feature_all_set,f)
+f.close()
+#savemat(save_path,feature_all_set)  
 process_bar.close()
 print("feature extraction compleleted")
 
