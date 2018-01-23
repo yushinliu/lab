@@ -31,11 +31,7 @@ def naive_G_U(b_train,ubm_means,ubm_var,ubm_weights,T_value):
         ubm_pdf=0
         for i in range(K_value):                                                      
             ubm_pdf+=ubm_weights[i]*density_func(b_train,ubm_means,ubm_var,t,i)
-        #print(ubm_pdf)
         ubm_value_set.append(ubm_pdf)
-        #prob_ubm=np.array(prob_ubm)
-       # ubm_value = np.dot(ubm_weights,prob_ubm)
-        #ubm_value = np.dot(ubm_weights,prob_ubm).flatten()
     ubm_value_set=np.array(ubm_value_set)
     return ubm_value_set
 
@@ -66,7 +62,7 @@ def cov_model(posteri_prob,b_train,new_mu,T_value):
         value_temp=1/np.sum(posteri_prob[k,:])
         sum_temp=0
         for t in range(T_value):
-            b_temp=np.dot(b_new[:,t].reshape(-1,1),b_new[:,t].reshape(1,-1))
+            b_temp=np.dot(b_train[:,t].reshape(-1,1),b_train[:,t].reshape(1,-1))
             #print(b_temp.shape)
             sum_temp+=posteri_prob[k,t]*b_temp
         #print(np.diag(value_temp*sum_temp-mu_temp).shape)

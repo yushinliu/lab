@@ -5,7 +5,7 @@ import math
 
 K_value=49
 
-def model_func(b_train,ubm_weights,ubm_means,ubm_var,ubm_value_set,T_value,gamma_UBM):
+def Speaker_model(b_train,ubm_weights,ubm_means,ubm_var,ubm_value_set,T_value,gamma_UBM):
 	posteri_prob=post_prob_model(b_train,ubm_weights,ubm_means,ubm_var,ubm_value_set,T_value)
 	new_mu=mu_model(posteri_prob,b_train)
 	new_cov=cov_model(posteri_prob,b_train,new_mu,T_value)
@@ -66,7 +66,7 @@ def cov_model(posteri_prob,b_train,new_mu,T_value):
         value_temp=1/np.sum(posteri_prob[k,:])
         sum_temp=0
         for t in range(T_value):
-            b_temp=np.dot(b_new[:,t].reshape(-1,1),b_new[:,t].reshape(1,-1))
+            b_temp=np.dot(b_train[:,t].reshape(-1,1),b_train[:,t].reshape(1,-1))
             #print(b_temp.shape)
             sum_temp+=posteri_prob[k,t]*b_temp
         #print(np.diag(value_temp*sum_temp-mu_temp).shape)
