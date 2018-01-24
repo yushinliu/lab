@@ -37,7 +37,6 @@ num_people=len(features.keys())
 
 #process_bar=ShowProcess(10)
 for cross_num in range(10):
-	print("crossvalidation "+str(cross_num+1)+" start")
 	#process_bar.show_process()
 	test_file_set=[]
 	new_mu_set=[]
@@ -45,9 +44,10 @@ for cross_num in range(10):
 	new_weight_set=[]
 	correct_num=0
 	false_num=0
-	process_bar=ShowProcess(len(features.keys()))
+	print("crossvalidation "+str(cross_num+1)+" building model start")
+	process_bar_1=ShowProcess(len(features.keys()))
 	for name in features.keys():
-		process_bar.show_process()
+		process_bar_1.show_process()
 		ubm_value_set=[]
 		whole_set=features.get(name,'no such file').copy()
 		test_file=whole_set[cross_num]
@@ -62,8 +62,12 @@ for cross_num in range(10):
 		new_mu_set.append(new_mu)
 		new_cov_set.append(new_cov)
 		new_weight_set.append(new_weight)
-	process_bar.close()
+	process_bar_1.close()
+	print("crossvalidation "+str(cross_num+1)+" building model compeleted")
+	print("crossvalidation "+str(cross_num+1)+" identification start")
+	process_bar_2=ShowProcess(num_people)
 	for index_1 in range(num_people):
+		process_bar_2.show_process()
 		T_value=test_file_set[index_1].shape[1]
 		scores_set=[]
 		for index_2 in range(num_people):
@@ -73,6 +77,8 @@ for cross_num in range(10):
 			correct_num +=1
 		else:
 			false_num +=1
+	process_bar_2.close()
+	print("crossvalidation "+str(cross_num+1)+" identification compeleted")
 	detection_rate=correct_num/(false_num+correct_num)
 	print("the crossval "+str(cross_num)+" detection_rate is "+str(detection_rate))
 	
