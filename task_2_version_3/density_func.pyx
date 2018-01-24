@@ -1,7 +1,9 @@
 import numpy as np
+
+from libc.math cimport exp,pi
 from cpython cimport array
 import array
-from scipy.stats import norm,multivariate_normal
+#from scipy.stats import norm,multivariate_normal
 
 #math
 #import math
@@ -14,5 +16,6 @@ def density_func(b_train,ubm_means,ubm_var,T_value,K_value):
     cdef int k,t
     for k in range(K_value):
         for t in range(T_value):
-            prob_set[k,t]=multivariate_normal.pdf(b_train[:,t],ubm_means[k],ubm_var[k,:,:])
+            prob_set[k,t]=(1/((2*pi)**(15/2)*(np.linalg.det(ubm_var[k,:,:]))**(1/2)))*\
+    exp((-0.5)*np.dot(np.dot((b_new[:,t]-ubm_means[k]),np.linalg.inv(ubm_var[k,:,:])),(b_new[:,k]-ubm_means[k])))
     return prob_set
