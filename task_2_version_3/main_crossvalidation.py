@@ -15,13 +15,14 @@ from scipy.io import loadmat,savemat
 
 #audio_path = "/Users/Mata/Documents/2017/学习/ws2017:18/PUL/forStudents/timit/test"
 
-save_path="D:\\LAB\\lab\\task_2_version_2\\features.txt"
+#save_path="D:\\LAB\\lab\\task_2_version_3\\features.txt"
+save_path="/Users/Mata/Documents/lab/task_2_version_3/features.txt"
 f = open(save_path,'rb')
 features=pickle.load(f)
 f.close()
 
-#ubm_dataset=loadmat("/Users/Mata/Documents/2017/学习/ws2017:18/PUL/forStudents/ubm/UBM_GMMNaive_MFCC_Spectrum0to8000Hz.mat",mat_dtype=True)
-ubm_dataset=loadmat("C:\\Users\\hasee\\workspace\\workspace\\lab\\patRecDat\\forStudents\\ubm\\UBM_GMMNaive_MFCC_Spectrum0to8000Hz.mat",mat_dtype=True)
+ubm_dataset=loadmat("/Users/Mata/Documents/2017/学习/ws2017:18/PUL/forStudents/ubm/UBM_GMMNaive_MFCC_Spectrum0to8000Hz.mat",mat_dtype=True)
+#ubm_dataset=loadmat("C:\\Users\\hasee\\workspace\\workspace\\lab\\patRecDat\\forStudents\\ubm\\UBM_GMMNaive_MFCC_Spectrum0to8000Hz.mat",mat_dtype=True)
 ubm_means=ubm_dataset['means']
 ubm_var = ubm_dataset['var']
 ubm_weights = ubm_dataset['weights'].ravel()

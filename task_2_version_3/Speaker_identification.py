@@ -1,5 +1,5 @@
 import numpy as np
-from Speaker_model import density_func
+from density_func import density_func
 from Speaker_model import naive_G_U
 
 #math
