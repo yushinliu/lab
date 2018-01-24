@@ -34,3 +34,7 @@ operator:Shanqi Yang
 file name:plot_prediction.py
 operator:Shanqi Yang
 +encasulation function
+
+--------------------------24/01/2017-----------------------------------------
+file name:kNN_fuction.py   
+file name:kNN_fuction_with_kFold.py
