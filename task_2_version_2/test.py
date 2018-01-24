@@ -1,0 +1,14 @@
+
+import pickle
+import numpy as np
+
+save_path="D:\\LAB\\lab\\task_2_version_2\\features.txt"
+f = open(save_path,'rb')
+features=pickle.load(f)
+f.close()
+
+print(features.keys())
+
+
+
+
