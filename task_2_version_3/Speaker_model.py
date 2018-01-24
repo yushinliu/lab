@@ -48,12 +48,12 @@ def cov_model(posteri_prob,b_train,new_mu,T_value):
     #posteri_prob:models*frames
     cov_set =[]
     #calculate mu*mu.T
-    for k in xrange(K_value):
+    for k in range(K_value):
         mu_temp=np.dot(new_mu[k,:].reshape(-1,1),new_mu[k,:].reshape(1,-1))
         #print(mu_temp.shape)
         value_temp=1/np.sum(posteri_prob[k,:])
         sum_temp=0
-        for t in xrange(T_value):
+        for t in range(T_value):
             b_temp=np.dot(b_train[:,t].reshape(-1,1),b_train[:,t].reshape(1,-1))
             #print(b_temp.shape)
             sum_temp+=posteri_prob[k,t]*b_temp
