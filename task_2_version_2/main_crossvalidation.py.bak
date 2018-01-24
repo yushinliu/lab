@@ -45,7 +45,7 @@ for cross_num in range(10):
 	new_weight_set=[]
 	correct_num=0
 	false_num=0
-	process_bar=ShowProcess(len(features.keys())
+	process_bar=ShowProcess(len(features.keys()))
 	for name in features.keys():
 		process_bar.show_process()
 		ubm_value_set=[]
@@ -70,7 +70,7 @@ for cross_num in range(10):
 		for index_2 in range(num_people):
 			scores=Speaker_identification(test_file_set[index_1],new_mu_set[index_2],new_cov_set[index_2],new_weight_set[index_2],T_value)
 			scores_set.append(scores)
-		if index_1==scores_set.index(max(scroes_set)):
+		if index_1==scores_set.index(max(scores_set)):
 			correct_num +=1
 		else:
 			false_num +=1

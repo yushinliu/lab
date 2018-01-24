@@ -57,9 +57,8 @@ for cross_num in range(10):
 		train_set.remove(test_file)
 		train_set=np.concatenate(train_set,axis=1)
 		T_value=train_set.shape[1]
-		ubm_value_set=naive_G_U(train_set,ubm_means,ubm_var,ubm_weights,T_value)
         #5.2 Speaker adaption
-		new_mu,new_cov,new_weight=Speaker_model(train_set,ubm_weights,ubm_means,ubm_var,ubm_value_set,T_value,gamma_UBM)
+		new_mu,new_cov,new_weight=Speaker_model(train_set,ubm_weights,ubm_means,ubm_var,T_value,gamma_UBM)
 		new_mu_set.append(new_mu)
 		new_cov_set.append(new_cov)
 		new_weight_set.append(new_weight)
@@ -70,7 +69,7 @@ for cross_num in range(10):
 		for index_2 in range(num_people):
 			scores=Speaker_identification(test_file_set[index_1],new_mu_set[index_2],new_cov_set[index_2],new_weight_set[index_2],T_value)
 			scores_set.append(scores)
-		if index_1==scores_set.index(max(scroes_set)):
+		if index_1==scores_set.index(max(scores_set)):
 			correct_num +=1
 		else:
 			false_num +=1

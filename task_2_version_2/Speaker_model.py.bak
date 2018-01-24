@@ -5,8 +5,10 @@ import math
 
 K_value=49
 
-def Speaker_model(b_train,ubm_weights,ubm_means,ubm_var,ubm_value_set,T_value,gamma_UBM):
-	posteri_prob=post_prob_model(b_train,ubm_weights,ubm_means,ubm_var,ubm_value_set,T_value)
+def Speaker_model(b_train,ubm_weights,ubm_means,ubm_var,T_value,gamma_UBM):
+	prob_set=density_func(b_train,ubm_means,ubm_var,T_value,K_value)
+	ubm_value_set=naive_G_U(prob_set,ubm_weights)
+	posteri_prob=post_prob_model(prob_set,ubm_weights,ubm_value_set)
 	new_mu=mu_model(posteri_prob,b_train)
 	new_cov=cov_model(posteri_prob,b_train,new_mu,T_value)
 	new_weight=weight_model(posteri_prob,T_value)
@@ -18,34 +20,25 @@ def Speaker_model(b_train,ubm_weights,ubm_means,ubm_var,ubm_value_set,T_value,ga
 
 
 # probability density function
-def density_func(b_train,ubm_means,ubm_var,T_value_1,K_value_1):
-    D=b_train.shape[0]
-    prob=(1/((2*math.pi)**(D/2)*(np.linalg.det(ubm_var[K_value_1,:,:]))**(1/2)))*\
-    np.exp((-0.5)*np.dot(np.dot((b_train[:,T_value_1]-ubm_means[K_value_1]).T,np.linalg.inv(ubm_var[K_value_1,:,:])),(b_train[:,T_value_1]-ubm_means[K_value_1])))
-    return prob
+def density_func(b_train,ubm_means,ubm_var,T_value,K_value):
+    prob_set=np.zeros((K_value,T_value))
+    for k in range(K_value):
+        for t in range(T_value):
+            prob_set[k,t]=multivariate_normal.pdf(b_train[:,t],ubm_means[k],ubm_var[k,:,:])
+    return prob_set
+
 
 #calculate the naive GMM-UBM
-def naive_G_U(b_train,ubm_means,ubm_var,ubm_weights,T_value):
-    ubm_value_set=[]
-    for t in range(T_value): 
-        ubm_pdf=0
-        for i in range(K_value):                                                      
-            ubm_pdf+=ubm_weights[i]*density_func(b_train,ubm_means,ubm_var,t,i)
-        #print(ubm_pdf)
-        ubm_value_set.append(ubm_pdf)
-        #prob_ubm=np.array(prob_ubm)
-       # ubm_value = np.dot(ubm_weights,prob_ubm)
-        #ubm_value = np.dot(ubm_weights,prob_ubm).flatten()
-    ubm_value_set=np.array(ubm_value_set)
+def naive_G_U(prob_set,ubm_weights):                                                    
+    ubm_value_set=np.dot(ubm_weights,prob_set)
     return ubm_value_set
 
 #calculate the posteri_prob
-def post_prob_model(b_train,ubm_weights,ubm_means,ubm_var,ubm_value_set,T_value):
-    posteri_prob=np.zeros((K_value,T_value)) #include 49 models
-    for k in range(K_value):
-        for t in range(T_value):
-            posteri_prob[k,t]=ubm_weights[k]*density_func(b_train,ubm_means,ubm_var,t,k)/ubm_value_set[t]
+def post_prob_model(prob_set,ubm_weights,ubm_value_set):
+    prob=np.multiply(ubm_weights.reshape(49,1),prob_set)
+    posteri_prob=prob/ubm_value_set
     return posteri_prob
+
 
 def mu_model(posteri_prob,b_train):
     #b_train: features*frames
