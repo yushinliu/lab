@@ -46,7 +46,7 @@ for cross_num in range(10):
 	correct_num=0
 	false_num=0
 	for name in features.keys():
-		whole_set=features.get(name,'no such file')
+		whole_set=features.get(name,'no such file').copy()
 		test_file=whole_set[cross_num]
 		test_file_set.append(test_file)
         #name_set.append(name)

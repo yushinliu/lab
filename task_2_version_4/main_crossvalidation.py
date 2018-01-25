@@ -50,8 +50,7 @@ for cross_num in range(10):
 		test_file=whole_set[cross_num]
 		test_file_set.append(test_file)
         #name_set.append(name)
-		train_set=whole_set.copy()
-		train_set.remove(test_file)
+		train_set=filter(lambda x:x!=test_file, whole_set)
 		train_set=np.concatenate(train_set,axis=1)
 		train_file_set.append(train_set)
  #start modeling and identificaton
