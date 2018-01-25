@@ -38,6 +38,7 @@ num_people=len(features.keys())
 #process_bar=ShowProcess(10)
 detection_rate_set=[]
 start=time.time()
+num_samples=len(features.keys())
 for cross_num in range(10):
 	#process_bar.show_process()
 	train_file_set=[]
@@ -55,23 +56,27 @@ for cross_num in range(10):
 		train_file_set.append(train_set)
  #start modeling and identificaton
 	print("crossvalidation "+str(cross_num+1)+" start")
-	process_bar_2=ShowProcess(len(features.keys()))
-	for index_1 in range(num_people):
+	process_bar_2=ShowProcess(num_samples)
+	scores_set=np.zeros((num_samples,num_samples))
+	for index_2 in range(num_samples):
 		process_bar_2.show_process()
-		scores_set=[]
-		b_test=test_file_set[index_1]
-		for index_2 in range(num_people):
-			b_train=train_file_set[index_2]
-			gmm=GaussianMixture(n_components=K_value,covariance_type='full',max_iter=1,weights_init=ubm_weights,\
-               means_init=ubm_means,precisions_init=np.linalg.inv(ubm_var))
-			gmm.fit(b_train.T)
-			scores=gmm.score(b_test.T)
-			scores_set.append(scores)
-		if index_1==scores_set.index(max(scores_set)):
+		b_train=train_file_set[index_2]
+		gmm=GaussianMixture(n_components=K_value,covariance_type='full',max_iter=1,weights_init=ubm_weights,\
+							means_init=ubm_means,precisions_init=np.linalg.inv(ubm_var))
+		gmm.fit(b_train.T)
+		for index_1 in range(num_samples):
+			#print("now test set "+str(index_1)+" is testing "+str(index_2))
+			b_test=np.array(test_file_set[index_1])
+			scores_set[index_1,index_2]=gmm.score(b_test.T)
+	for index in range(num_samples):
+		if index == np.argwhere(scores_set[index,:]==max(scores_set[index,:])):
 			correct_num +=1
 		else:
 			false_num +=1
+		#print("time cost %5.1f second"%((time.time()-start)/60))
 	process_bar_2.close()
+
+	detection_rate=correct_num/(correct_num+false_num)
 	print("crossvalidation "+str(cross_num+1)+" compeleted")
 	print("cost time %5.1f minute"%((time.time()-start)/60))
 	detection_rate=correct_num/(false_num+correct_num)
