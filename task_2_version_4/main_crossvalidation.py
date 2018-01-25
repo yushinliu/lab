@@ -48,9 +48,13 @@ for cross_num in range(10):
 	for name in features.keys():
 		whole_set=features.get(name,'no such file').copy()
 		test_file=whole_set[cross_num]
+		train_num=list(range(10))
+		train_num.remove(cross_num)
 		test_file_set.append(test_file)
         #name_set.append(name)
-		train_set=filter(lambda x:x!=test_file, whole_set)
+		train_set=[]
+		for num in train_num:
+			train_set.append(whole_set[num])
 		train_set=np.concatenate(train_set,axis=1)
 		train_file_set.append(train_set)
  #start modeling and identificaton
