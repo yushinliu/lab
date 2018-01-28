@@ -117,10 +117,10 @@ for cross_num in range(10):
 
 print("the total detection rate is ",correct_sum/(correct_sum+false_sum))
 
-save_path="D:\\LAB\\lab\\task_2_version_4\\confusion_matrix.txt"
+save_path="D:\\LAB\\lab\\task_2_version_3\\confusion_matrix.txt"
 #save_path="/Users/Mata/Documents/lab/task_2_version_3/features.txt"
-f = open(save_path,'wb')
-features=pickle.dump(confusion_matrix,f)
+f = open(save_path,'rb')
+features=pickle.dumb(confusion_matrix,f)
 f.close()
 
 #conf_mat=pd.DataFrame(confusion_matrix,index=[i for i in range(num_samples)],columns=[i for i in range(num_samples)])
