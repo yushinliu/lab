@@ -1,6 +1,6 @@
 import numpy as np
-from density_func import density_func
-from Speaker_model import naive_G_U
+from density_func import density_func,naive_G_U
+
 
 #math
 import math

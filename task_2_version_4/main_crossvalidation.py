@@ -52,6 +52,7 @@ detection_rate_set=[]
 start=time.time()
 error_set={}  
 num_samples=len(features.keys())
+name_set=list(features.keys())
 confusion_matrix=np.zeros((num_samples,num_samples))
 correct_sum=0
 false_sum=0
@@ -92,11 +93,12 @@ for cross_num in range(10):
 			#print("now test set "+str(index_1)+" is testing "+str(index_2))
 			b_test=np.array(test_file_set[index_1])
 			scores_set[index_1,index_2]=gmm.score(b_test.T)
+
 	'''
 	Calculate the detection rate
 	'''
 	for index in range(num_samples):
-		test_index=np.argwhere(scores_set[index,:]==max(scores_set[index,:]))
+		test_index=np.int(np.argwhere(scores_set[index,:]==max(scores_set[index,:])))
 		if index == test_index:
 			correct_num +=1
 			correct_sum +=1
@@ -105,7 +107,9 @@ for cross_num in range(10):
 			false_num +=1
 			false_sum +=1
 			confusion_matrix[index,test_index] +=1
+			print("error ! True: "+str(name_set[index])+" False: "+str(name_set[test_index]))
 		#print("time cost %5.1f second"%((time.time()-start)/60))
+
 	process_bar_2.close()
 
 	detection_rate=correct_num/(correct_num+false_num)
@@ -122,10 +126,6 @@ save_path="D:\\LAB\\lab\\task_2_version_4\\confusion_matrix.txt"
 f = open(save_path,'wb')
 features=pickle.dump(confusion_matrix,f)
 f.close()
-
-#conf_mat=pd.DataFrame(confusion_matrix,index=[i for i in range(num_samples)],columns=[i for i in range(num_samples)])
-#plt.figure(figsize=(18,10))
-#sn.heatmap(conf_mat,annot=True)
 
 
 
