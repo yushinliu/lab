@@ -1,3 +1,5 @@
+#cython: boundscheck=False, wraparound=False, nonecheck=False
+
 import numpy as np
 
 from libc.math cimport exp,pi
@@ -20,3 +22,7 @@ def density_func(b_train,ubm_means,ubm_var,T_value,K_value):
     exp((-0.5)*np.dot(np.dot((b_train[:,t]-ubm_means[k]),np.linalg.inv(ubm_var[k,:,:])),(b_train[:,k]-ubm_means[k])))
     return prob_set
 
+  #calculate the naive GMM-UBM
+def naive_G_U(prob_set,ubm_weights):                                                    
+    ubm_value_set=np.dot(ubm_weights,prob_set)
+    return ubm_value_set
