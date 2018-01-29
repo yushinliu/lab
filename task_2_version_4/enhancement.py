@@ -18,25 +18,25 @@ from scipy.io import loadmat,savemat
 Import features
 '''
 
-save_path="D:\\LAB\\lab\\task_2_version_4\\features.txt"
-#save_path="/Users/Mata/Documents/lab/task_2_version_3/features.txt"
+#save_path="D:\\LAB\\lab\\task_2_version_4\\features.txt"
+save_path="/Users/Mata/Documents/lab/task_2_version_4/features.txt"
 f = open(save_path,'rb')
 features=pickle.load(f)
 f.close()
 
-save_path="D:\\LAB\\lab\\task_2_version_4\\unknown_features.txt"
-#save_path="/Users/Mata/Documents/lab/task_2_version_3/features.txt"
+#save_path="D:\\LAB\\lab\\task_2_version_4\\unknown_features.txt"
+save_path="/Users/Mata/Documents/lab/task_2_version_4/unknown_feature.txt"
 f = open(save_path,'rb')
 b_new_test=pickle.load(f)
-print(b_new_test.shape)
+#print(b_new_test.shape)
 f.close()
 
 '''
 Import UBM model
 '''
 
-#ubm_dataset=loadmat("/Users/Mata/Documents/2017/ѧϰ/ws2017:18/PUL/forStudents/ubm/UBM_GMMNaive_MFCC_Spectrum0to8000Hz.mat",mat_dtype=True)
-ubm_dataset=loadmat("C:\\Users\\hasee\\workspace\\workspace\\lab\\patRecDat\\forStudents\\ubm\\UBM_GMMNaive_MFCC_Spectrum0to8000Hz.mat",mat_dtype=True)
+ubm_dataset=loadmat("/Users/Mata/Documents/2017/学习/ws2017:18/PUL/forStudents/ubm/UBM_GMMNaive_MFCC_Spectrum0to8000Hz",mat_dtype=True)
+#ubm_dataset=loadmat("C:\\Users\\hasee\\workspace\\workspace\\lab\\patRecDat\\forStudents\\ubm\\UBM_GMMNaive_MFCC_Spectrum0to8000Hz.mat",mat_dtype=True)
 ubm_means=ubm_dataset['means']
 ubm_var = ubm_dataset['var']
 ubm_weights = ubm_dataset['weights'].ravel()
@@ -62,7 +62,7 @@ error_set={}
 num_samples=len(features.keys())
 name_set=list(features.keys())
 name_set.append("unknown")
-confusion_matrix=np.zeros((num_samples,num_samples))
+confusion_matrix=np.zeros((num_samples+1,num_samples+1))
 correct_sum=0
 false_sum=0
 for cross_num in range(10):
@@ -112,14 +112,15 @@ for cross_num in range(10):
         b_test=np.array(test_file_set[index_1])
         T_value=b_test.shape[1]
         unknown_score=Speaker_identification(b_test,ubm_means,ubm_var,ubm_weights,T_value)
-        scores_set[index,num_samples+1]=unknown_score
+        #scores_set[index,num_samples]=unknown_score
+        scores_set[index,num_samples]=(1/T_value)*unknown_score
         
         
     '''
     Calculate the detection rate
     '''
     for index in range(num_samples+1):
-        test_index=np.argwhere(scores_set[index,:]==max(scores_set[index,:]))
+        test_index=np.int(np.argwhere(scores_set[index,:]==max(scores_set[index,:])))
         if index == test_index:
             correct_num +=1
             correct_sum +=1
@@ -142,8 +143,8 @@ for cross_num in range(10):
 
 print("the total detection rate is ",correct_sum/(correct_sum+false_sum))
 
-save_path="D:\\LAB\\lab\\task_2_version_4\\confusion_matrix.txt"
-#save_path="/Users/Mata/Documents/lab/task_2_version_3/features.txt"
+#save_path="D:\\LAB\\lab\\task_2_version_4\\confusion_matrix.txt"
+save_path="/Users/Mata/Documents/lab/task_2_version_4/confusion_matrix.txt"
 f = open(save_path,'wb')
 features=pickle.dump(confusion_matrix,f)
 f.close()
