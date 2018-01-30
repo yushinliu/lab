@@ -62,7 +62,6 @@ error_set={}
 num_samples=len(features.keys())
 name_set=list(features.keys())
 name_set.append("unknown")
-confusion_matrix=np.zeros((num_samples+1,num_samples+1))
 correct_sum=0
 false_sum=0
 for cross_num in range(10):
@@ -109,7 +108,7 @@ for cross_num in range(10):
     Enhancement : added the unknown detection part
     '''
     for index in range(num_samples+1):
-        b_test=np.array(test_file_set[index_1])
+        b_test=np.array(test_file_set[index])
         T_value=b_test.shape[1]
         unknown_score=Speaker_identification(b_test,ubm_means,ubm_var,ubm_weights,T_value)
         #scores_set[index,num_samples]=unknown_score
@@ -124,11 +123,10 @@ for cross_num in range(10):
         if index == test_index:
             correct_num +=1
             correct_sum +=1
-            confusion_matrix[index,index] +=1
         else:
             false_num +=1
             false_sum +=1
-            confusion_matrix[index,test_index] +=1
+            print('')
             print("error ! True: "+name_set[index]+" False: "+name_set[test_index])
         #print("time cost %5.1f second"%((time.time()-start)/60))
 
@@ -139,7 +137,7 @@ for cross_num in range(10):
     print("cost time %5.1f minute"%((time.time()-start)/60))
     detection_rate=correct_num/(false_num+correct_num)
     detection_rate_set.append(detection_rate)
-    print("the crossval "+str(cross_num)+" detection_rate is "+str(detection_rate))
+    print("the crossval "+str(cross_num+1)+" detection_rate is "+str(detection_rate))
 
 print("the total detection rate is ",correct_sum/(correct_sum+false_sum))
 
