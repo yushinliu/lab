@@ -1,9 +1,9 @@
+from data_import import data_import
 from frame_func import frame_func
 from window_func import window_func
 from mel_func import mel_func
 from DCT_func import DCT_func
 from process_bar import ShowProcess
-import soundfile as sf
 
 #default 
 import pickle
@@ -19,28 +19,44 @@ L_value=np.int(fs*t_frame)
 NFFT=512
 nfilt=22
 
-audio_path = "D:\\LAB\\workspace\\lab\\patRecDat\\forStudents\\timit\\train\\dr1\\fcjf0\\sa1.wav"
+audio_path = "D:\\LAB\\workspace\\lab\\patRecDat\\forStudents\\timit\\train"
+#audio_path = "/Users/Mata/Documents/2017/ѧϰ/ws2017:18/PUL/forStudents/timit/test"
 
-samples,_=sf.read(audio_path)
+dataset=data_import(audio_path,1)  #samples is a dictionary of 172 persons
 
-frames=frame_func(samples)  #frames is a list with length of 320*frames
+feature_all_set={}
+print("feature engineering start")
+process_bar=ShowProcess(len(dataset.keys()))
+for name in dataset.keys():
+	process_bar.show_process()
+	#print("make the feature of "+ name)
+	single_data=dataset.get(name,'no such file name') # samples of one person
+	features_set=[]
+	for samples in single_data:
 
-window_frames=window_func(frames) #using hanning window
+		frames=frame_func(samples)  #frames is a list with length of 320*frames
 
-freq_frames=mel_func(window_frames)# 
+		window_frames=window_func(frames) #using hanning window
 
-features=DCT_func(freq_frames)# features: 15*frames
+		freq_frames=mel_func(window_frames)# 
 
-#features=features.ravel() # need to be reshape when import again
-print(features.shape)2018/1/28
-save_path="D:\\LAB\\lab\\task_2_version_4\\unknown_feature.txt"
+		features=DCT_func(freq_frames)# features: 15*frames
+
+		#features=features.ravel() # need to be reshape when import again
+
+		features_set.append(features)
+
+	feature_all_set.setdefault(name)
+
+	feature_all_set[name]=features_set
+
+print(len(feature_all_set.keys()))
+save_path="D:\\LAB\\lab\\task_2_version_2\\unknown_features.txt"
 f = open(save_path,'wb')
-pickle.dump(features,f)
+pickle.dump(feature_all_set,f)
 f.close()
 #savemat(save_path,feature_all_set)  
+process_bar.close()
 print("feature extraction compleleted")
-
-
-
 
 
