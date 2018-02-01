@@ -43,6 +43,7 @@ def voice_activity_detection(frame_set,frame_num,gamma=10):
     return train_frame_set
 def frame_func(samples,gamma):
 	frame_set,frame_num=frame_segment(samples)
+	print(len(frame_set))
 	train_frame_set=voice_activity_detection(frame_set,frame_num,gamma)
 	return train_frame_set
 

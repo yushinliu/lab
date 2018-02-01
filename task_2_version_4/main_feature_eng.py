@@ -33,6 +33,10 @@ for name in dataset.keys():
 	single_data=dataset.get(name,'no such file name') # samples of one person
 	features_set=[]
 	for samples in single_data:
+		if name in ['yuxin','qianqian','shanqi']: #custom voice has dimension error 
+			samples=samples[:,0]
+		else:
+			pass
 
 		frames=frame_func(samples)  #frames is a list with length of 320*frames
 

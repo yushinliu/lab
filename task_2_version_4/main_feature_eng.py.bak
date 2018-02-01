@@ -42,6 +42,7 @@ for name in dataset.keys():
 
 		features=DCT_func(freq_frames)# features: 15*frames
 
+		#features=features.ravel() # need to be reshape when import again
 
 		features_set.append(features)
 

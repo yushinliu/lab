@@ -41,8 +41,8 @@ def voice_activity_detection(frame_set,frame_num,gamma=10):
         #train_frame_set.append(frame_set[index])
     train_frame_set=np.array(list(train_power_set))
     return train_frame_set
-def frame_func(samples):
+def frame_func(samples,gamma):
 	frame_set,frame_num=frame_segment(samples)
-	train_frame_set=voice_activity_detection(frame_set,frame_num,gamma=10)
+	train_frame_set=voice_activity_detection(frame_set,frame_num,gamma)
 	return train_frame_set
 
