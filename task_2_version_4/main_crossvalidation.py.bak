@@ -17,7 +17,7 @@ from scipy.io import loadmat,savemat
 Import features
 '''
 
-save_path="D:\\LAB\\lab\\task_2_version_3\\features.txt"
+save_path="D:\\LAB\\lab\\task_2_version_4\\features_10.txt"
 #save_path="/Users/Mata/Documents/lab/task_2_version_3/features.txt"
 f = open(save_path,'rb')
 features=pickle.load(f)
@@ -86,7 +86,7 @@ for cross_num in range(10):
 	for index_2 in range(num_samples):
 		process_bar_2.show_process()
 		b_train=train_file_set[index_2]
-		gmm=GaussianMixture(n_components=K_value,covariance_type='full',max_iter=1,weights_init=ubm_weights,\
+		gmm=GaussianMixture(n_components=K_value,covariance_type='full',max_iter=30,weights_init=ubm_weights,\
 							means_init=ubm_means,precisions_init=np.linalg.inv(ubm_var))
 		gmm.fit(b_train.T)
 		for index_1 in range(num_samples):
@@ -98,9 +98,7 @@ for cross_num in range(10):
 	Calculate the detection rate
 	'''
 	for index in range(num_samples):
-		test_index=np.argwhere(scores_set[index,:]==max(scores_set[index,:]))
-		print(index)
-		print(test_index[[0]])
+		test_index=np.int(np.argwhere(scores_set[index,:]==max(scores_set[index,:])))
 		if index == test_index:
 			correct_num +=1
 			correct_sum +=1
@@ -126,7 +124,7 @@ print("the total detection rate is ",correct_sum/(correct_sum+false_sum))
 save_path="D:\\LAB\\lab\\task_2_version_4\\confusion_matrix.txt"
 #save_path="/Users/Mata/Documents/lab/task_2_version_3/features.txt"
 f = open(save_path,'wb')
-features=pickle.dump(confusion_matrix,f)
+pickle.dump(confusion_matrix,f)
 f.close()
 
 

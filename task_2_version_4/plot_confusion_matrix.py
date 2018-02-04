@@ -13,7 +13,10 @@ f.close()
 
 print(confusion_matrix.shape)
 num_samples=confusion_matrix.shape[0]
-conf_mat=pd.DataFrame(confusion_matrix)#,index=[i for i in range(num_samples)],columns=[i for i in range(num_samples)])
+#confusion_matrix[0,100]+=10
+conf_mat=pd.DataFrame(confusion_matrix/10)#,index=[i for i in range(num_samples)],columns=[i for i in range(num_samples)])
 plt.figure(figsize=(18,10))
-sn.heatmap(conf_mat,annot=True)
+sn.heatmap(conf_mat,cmap="YlGnBu",annot=False,linewidth=0.1,vmax=1.0,xticklabels=False, yticklabels=False)
+plt.ylabel("test utterance",fontsize=20)
+plt.xlabel("identified ID",fontsize=20)
 plt.show()
