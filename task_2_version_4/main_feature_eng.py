@@ -22,7 +22,7 @@ nfilt=22
 audio_path = "D:\\LAB\\workspace\\lab\\patRecDat\\forStudents\\timit\\test"
 #audio_path = "/Users/Mata/Documents/2017/学习/ws2017:18/PUL/forStudents/timit/test"
 
-dataset=data_import(audio_path)  #samples is a dictionary of 172 persons
+dataset=data_import(audio_path,0)  #samples is a dictionary of 172 persons
 
 feature_all_set={}
 print("feature engineering start")
@@ -38,7 +38,7 @@ for name in dataset.keys():
 		else:
 			pass
 
-		frames=frame_func(samples)  #frames is a list with length of 320*frames
+		frames=frame_func(samples,10)  #frames is a list with length of 320*frames
 
 		window_frames=window_func(frames) #using hanning window
 

@@ -5,7 +5,8 @@ from scipy.fftpack import fft, dct
 #math
 import math
 
-
+t_feed=10 #feed time
+t_frame=20 #frame time
 sample_rate=16000
 fs=sample_rate/1000 #sample_rate of each ms
 L_value=np.int(fs*t_frame)

@@ -23,7 +23,7 @@ def Mel_scale(freq_orig):
     if freq_orig <= 1000:
         f_mel = freq_orig
     else:
-        f_mel = 2595 * np.log10(1 + (freq_orig/2) / 700)
+        f_mel = 2595 * np.log10(1 + (freq_orig) / 700)
     return f_mel
 
 def Mel_scale_inv(f_mel):
@@ -36,7 +36,7 @@ def Mel_scale_inv(f_mel):
 def mel_filter_bank(sample_rate,NFFT,pow_frames,nfilt):
     low_freq_mel = 0
     #(sample_rate/2)??? because of rfft?
-    high_freq_mel = Mel_scale(sample_rate)  # Convert Hz to Mel #Mel Scale function 
+    high_freq_mel = Mel_scale(sample_rate/2)  # Convert Hz to Mel #Mel Scale function 
     # nfilt + 2: add the boundary points
     mel_points = np.linspace(low_freq_mel, high_freq_mel, nfilt + 2)  # Equally spaced in Mel scale
     hz_points=[]
