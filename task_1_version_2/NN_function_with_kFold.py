@@ -152,7 +152,7 @@ def nn_validation (X_train,y_train,X_val,y_val,alpha):
     y_pred_temp=nn_predict(dis_1,dis_2,alpha,X_val)
     Precall,f1_score,BER,FPR = cal_score (y_pred_temp,y_val['label'])
     print ("TPR:"+str(Precall)+"   f1 score:" + str(f1_score)+"   FPR:"+ str(FPR)+"   BER:" + str(BER))
-    return
+    return y_pred_temp
 
 
 # In[16]:

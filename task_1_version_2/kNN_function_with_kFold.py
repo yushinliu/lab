@@ -25,7 +25,7 @@ def kNN_base_function (X_train,y_train,X_val,y_val,k_value):
     y_pred = {"label_pred":y_pred}
     y_pred = pd.DataFrame(data=y_pred)
     Precall,f1_score,BER,FPR = cal_score (y_pred,y_val['label']) 
-    return Precall,f1_score,BER,FPR
+    return Precall,f1_score,BER,FPR,y_pred
 
 
 # In[37]:
