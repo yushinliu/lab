@@ -56,6 +56,10 @@ name_set=list(features.keys())
 confusion_matrix=np.zeros((num_samples,num_samples))
 correct_sum=0
 false_sum=0
+
+"""
+set up the 10 cross validation
+"""
 for cross_num in range(10):
 	#process_bar.show_process()
 	train_file_set=[]
